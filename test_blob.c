@@ -39,6 +39,7 @@ int main(int argc, char **argv) {
     sqlite4_close(db, 0);
     return 1;
   }
+  printf("Index created successfully\n");
 
   printf("\n-- tables --\n");
   rc = sqlite4_exec(
@@ -51,8 +52,9 @@ int main(int argc, char **argv) {
     sqlite4_close(db, 0);
     return 1;
   }
+  printf("Tables selected successfully\n");
 
-    printf("\n-- indexes --\n");
+  printf("\n-- indexes --\n");
   rc = sqlite4_exec(
     db,
     "SELECT name FROM sqlite_master WHERE type='index' ORDER BY name;",
@@ -63,7 +65,8 @@ int main(int argc, char **argv) {
     sqlite4_close(db, 0);
     return 1;
   }
-
+  printf("Indexes selected successfully\n");
+  
   sqlite4_close(db, 0);
   return 0;
 }
