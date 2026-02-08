@@ -73,3 +73,4 @@ sqlite4.h
 parse.h.temp
 test.db
 
+cscope.out
