@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
   sqlite4 *db = 0;
   int rc = 0;
 
-  rc = sqlite4_open(0, "test.db", &db);
+  rc = sqlite4_open(0, "test_vanilla.db", &db);
   if (rc) {
     printf("open failed: %d\n", rc);
     return 1;
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
   printf("\n-- creating table --\n");
   rc = sqlite4_exec(
     db,
-    "CREATE TABLE movies (title TEXT,);",
+    "CREATE TABLE movies (title TEXT);",
     0, 0
   );
   if (rc) {
