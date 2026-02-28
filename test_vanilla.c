@@ -120,6 +120,27 @@ int main(int argc, char **argv) {
   }
   printf("Data inserted successfully\n");
 
+  printf("\n-- selecting data --\n");
+  rc = sqlite4_exec(
+    db,
+    "SELECT title FROM movies;",
+    print_callback,
+    0
+  );
+  if (rc) {
+    printf("sql error (select): rc=%d\n", rc);
+    sqlite4_close(db, 0);
+    return 1;
+  }
+  printf("Data selected successfully\n");
+
+  printf("\n-- number of data from table (x) --\n");
+  sqlite4_exec(db, "SELECT count(*) AS n FROM x;", print_callback, 0);
+  // printf("\n-- number of data from shadow table (x_idx_shadow) --\n");
+  // sqlite4_exec(db, "SELECT count(*) AS n FROM x_idx_shadow;", print_callback, 0);
+  printf("\n-- number of data from vector index table (x_idx) --\n");
+  sqlite4_exec(db, "SELECT name, sql FROM sqlite_schema WHERE name LIKE 'x_idx%';", print_callback, 0);
+
   sqlite4_close(db, 0);
   return 0;
 }
