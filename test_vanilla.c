@@ -138,8 +138,6 @@ int main(int argc, char **argv) {
   sqlite4_exec(db, "SELECT count(*) AS n FROM movies;", print_callback, 0);
   // printf("\n-- number of data from shadow table (x_idx_shadow) --\n");
   // sqlite4_exec(db, "SELECT count(*) AS n FROM x_idx_shadow;", print_callback, 0);
-  printf("\n-- number of data from index table (movies_title_idx) --\n");
-  sqlite4_exec(db, "SELECT count(*) AS n FROM movies_title_idx;", print_callback, 0);
 
   sqlite4_close(db, 0);
   return 0;
