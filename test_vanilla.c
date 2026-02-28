@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
   printf("\n-- creating table --\n");
   rc = sqlite4_exec(
     db,
-    "CREATE TABLE movies (title TEXT);",
+    "CREATE TABLE movies (id INTEGER PRIMARY KEY, title TEXT);",
     0, 0
   );
   if (rc) {
