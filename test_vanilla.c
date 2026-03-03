@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
   printf("\n-- creating table --\n");
   rc = sqlite4_exec(
     db,
-    "CREATE TABLE movies (id INTEGER PRIMARY KEY, title TEXT);",
+    "CREATE TABLE movies (id INTEGER PRIMARY KEY, dummy BLOB);",
     0, 0
   );
   if (rc) {
@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
   printf("\n-- creating index --\n");
   rc = sqlite4_exec(
     db,
-    "CREATE INDEX movies_title_idx ON movies (title);",
+    "CREATE INDEX movies_dummy_idx ON movies (dummy);",
     0, 0
   );
   if (rc) {
@@ -109,7 +109,7 @@ int main(int argc, char **argv) {
   printf("\n-- inserting data --\n");
   rc = sqlite4_exec(
     db,
-    "INSERT INTO movies (title) VALUES ('Inception');",
+    "INSERT INTO movies (dummy) VALUES (X'0123456789ABCDEF');",
     print_callback,
     0
   );
@@ -123,7 +123,7 @@ int main(int argc, char **argv) {
   printf("\n-- selecting data --\n");
   rc = sqlite4_exec(
     db,
-    "SELECT title FROM movies;",
+    "SELECT dummy FROM movies;",
     print_callback,
     0
   );
